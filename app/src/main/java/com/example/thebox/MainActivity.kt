@@ -1,6 +1,8 @@
 package com.example.thebox
 
 import android.os.Bundle
+import android.view.View
+import android.view.WindowInsetsController
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -20,6 +22,12 @@ import com.example.thebox.ui.ObstacleSelectScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        // TODO: Only hide on obstacle screen and allow re-hide after re-show
+        window.decorView.apply {
+            systemUiVisibility =
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_FULLSCREEN
+        }
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
