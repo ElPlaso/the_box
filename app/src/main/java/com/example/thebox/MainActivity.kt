@@ -15,6 +15,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.thebox.ui.ObstacleScreen
 import com.example.thebox.ui.ObstacleSelectScreen
 
 class MainActivity : ComponentActivity() {
@@ -31,7 +32,8 @@ class MainActivity : ComponentActivity() {
 }
 
 enum class Screen() {
-    ObstacleSelect
+    ObstacleSelect,
+    Obstacle
 }
 
 @Composable
@@ -44,14 +46,19 @@ fun App(
     NavHost(
         navController = navController,
         startDestination = Screen.ObstacleSelect.name,
-
-        ) {
+    ) {
         composable(route = Screen.ObstacleSelect.name) {
             ObstacleSelectScreen(
                 obstacles = uiState.obstacles,
                 onObstacleSelect = {
                     viewModel.selectObstacle(it)
+                    navController.navigate(Screen.Obstacle.name)
                 }
+            )
+        }
+        composable(route = Screen.Obstacle.name) {
+            ObstacleScreen(
+                obstacle = uiState.currentObstacle
             )
         }
     }
