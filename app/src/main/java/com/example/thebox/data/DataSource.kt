@@ -6,12 +6,12 @@ import com.example.thebox.model.Obstacle
 object DataSource {
     val obstacles = listOf(
         Obstacle("plywood", R.drawable.plywood),
-        Obstacle("plywood", R.drawable.green_wood),
-        Obstacle("plywood", R.drawable.stones),
-        Obstacle("plywood", R.drawable.brick),
-        Obstacle("plywood", R.drawable.grass),
-        Obstacle("plywood", R.drawable.concrete),
-        Obstacle("plywood", R.drawable.paint),
-        Obstacle("plywood", R.drawable.tiles),
+        Obstacle("green wood", R.drawable.green_wood),
+        Obstacle("stone gap", R.drawable.stones),
+        Obstacle("brick", R.drawable.brick),
+        Obstacle("grass gap", R.drawable.grass),
+        Obstacle("concrete", R.drawable.concrete),
+        Obstacle("paint", R.drawable.paint),
+        Obstacle("tiles", R.drawable.tiles),
     )
 }
