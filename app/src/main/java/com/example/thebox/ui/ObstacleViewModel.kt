@@ -10,14 +10,15 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
 class ObstacleViewModel : ViewModel() {
-    private val _uiState = MutableStateFlow(ObstacleUiState(
-        obstacles = listOf(),
-        currentObstacle = null
-    ))
+    private val _uiState = MutableStateFlow(
+        ObstacleUiState(
+            obstacles = listOf(),
+            currentObstacle = null
+        )
+    )
     val uiState: StateFlow<ObstacleUiState> = _uiState.asStateFlow()
 
     private var obstacles: List<Obstacle> = listOf()
-    private var currentObstacle: Obstacle? = null
 
     private fun getObstacles(): List<Obstacle> {
         obstacles = DataSource.obstacles
@@ -25,22 +26,16 @@ class ObstacleViewModel : ViewModel() {
         return obstacles
     }
 
-    private fun getCurrentObstacle(): Obstacle? {
-        return currentObstacle
-    }
-
-    private fun selectCurrentObstacle(obstacle: Obstacle) {
-        currentObstacle = obstacle
-
+    fun selectObstacle(obstacle: Obstacle) {
         _uiState.update { currentState ->
             currentState.copy(
                 obstacles = obstacles,
-                currentObstacle = currentObstacle
+                currentObstacle = obstacle
             )
         }
     }
 
-    private fun deselectObstacle() {
+    fun deselectObstacle() {
         _uiState.update { currentState ->
             currentState.copy(
                 obstacles = obstacles,
