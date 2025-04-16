@@ -18,8 +18,6 @@ fun ObstacleScreen(
     }
 }
 
-// TODO: Rotate image whilst still filling height
-
 @Composable
 fun ObstacleImage(
     obstacle: Obstacle,
