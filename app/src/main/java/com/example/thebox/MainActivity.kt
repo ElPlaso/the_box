@@ -60,6 +60,12 @@ fun App(
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
+    navController.addOnDestinationChangedListener { _, destination, _ ->
+        if (destination.route == Screen.ObstacleSelect.name) {
+            viewModel.deselectObstacle()
+        }
+    }
+
     NavHost(
         navController = navController,
         startDestination = Screen.ObstacleSelect.name,
